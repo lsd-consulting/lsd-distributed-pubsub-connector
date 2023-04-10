@@ -1,0 +1,17 @@
+dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    // LSD
+    api 'io.github.lsd-consulting:lsd-distributed-data-access:0.1.4'
+
+    // Other
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.2'
+    implementation("org.apache.httpcomponents:fluent-hc:4.5.14")
+
+
+    implementation('io.github.lsd-consulting:lsd-distributed-generator-ui:3.0.5:wiremock-stubs') {
+        exclude group: "*", module: "*"
+    }
+}
