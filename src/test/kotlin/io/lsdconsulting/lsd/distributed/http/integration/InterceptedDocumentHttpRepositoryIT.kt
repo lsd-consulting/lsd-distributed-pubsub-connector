@@ -67,6 +67,16 @@ internal class InterceptedDocumentHttpRepositoryIT {
         lsdControllerStub.verifyStore(interceptedInteraction)
     }
 
+    @Test
+    fun shouldCallCorrectStorageEndpointWhenRetrievingInteractionsByTraceId() {
+        val interceptedInteraction = interceptedInteraction()
+        lsdControllerStub.findByTraceIds(mutableListOf(interceptedInteraction), listOf( interceptedInteraction!!.traceId))
+
+        underTest.findByTraceIds(interceptedInteraction.traceId)
+
+        lsdControllerStub.verifyFindByTraceIds(listOf( interceptedInteraction.traceId))
+    }
+
     private fun objectMapper(): ObjectMapper {
         val mapper = ObjectMapper()
         mapper.registerModule(JavaTimeModule())
