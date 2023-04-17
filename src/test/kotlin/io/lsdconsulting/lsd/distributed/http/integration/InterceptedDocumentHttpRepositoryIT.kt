@@ -70,7 +70,7 @@ internal class InterceptedDocumentHttpRepositoryIT {
     @Test
     fun shouldCallCorrectStorageEndpointWhenRetrievingInteractionsByTraceId() {
         val interceptedInteraction = interceptedInteraction()
-        lsdControllerStub.findByTraceIds(mutableListOf(interceptedInteraction), listOf( interceptedInteraction!!.traceId))
+        lsdControllerStub.findByTraceIds(mutableListOf(interceptedInteraction), listOf( interceptedInteraction.traceId))
 
         underTest.findByTraceIds(interceptedInteraction.traceId)
 
@@ -85,17 +85,16 @@ internal class InterceptedDocumentHttpRepositoryIT {
         return mapper
     }
 
-    private fun interceptedInteraction(): InterceptedInteraction? =
-        InterceptedInteraction.builder()
-            .elapsedTime(20L)
-            .httpStatus("OK")
-            .path("/path")
-            .httpMethod("GET")
-            .body("body")
-            .interactionType(InteractionType.REQUEST)
-            .traceId("traceId")
-            .createdAt(ZonedDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.of("UTC")))
-            .build()
+    private fun interceptedInteraction(): InterceptedInteraction =
+        InterceptedInteraction(
+            elapsedTime = 20L,
+            httpStatus = "OK",
+            path = "/path",
+            httpMethod = "GET",
+            body = "body",
+            interactionType = InteractionType.REQUEST,
+            traceId = "traceId",
+            createdAt = ZonedDateTime.ofInstant(Instant.ofEpochSecond(0), ZoneId.of("UTC")))
 
     companion object {
         private val wireMockServer = WireMockServer(8070)

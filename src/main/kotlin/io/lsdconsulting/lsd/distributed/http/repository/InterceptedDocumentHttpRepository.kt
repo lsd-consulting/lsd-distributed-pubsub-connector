@@ -42,6 +42,8 @@ class InterceptedDocumentHttpRepository(
         }
     }
 
+    override val isActive = true
+
     override fun findByTraceIds(vararg traceId: String): List<InterceptedInteraction> {
         val response: HttpResponse
 

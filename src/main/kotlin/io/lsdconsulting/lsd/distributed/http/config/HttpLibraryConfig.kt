@@ -8,6 +8,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRepository
 import io.lsdconsulting.lsd.distributed.http.repository.InterceptedDocumentHttpRepository
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
@@ -16,7 +17,9 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 @ConditionalOnProperty(name = ["lsd.dist.db.connectionString"])
 open class HttpLibraryConfig {
+
     @Bean
+    @ConditionalOnExpression("#{'\${lsd.dist.db.connectionString:}'.startsWith('http')}")
     open fun interceptedDocumentRepository(
         @Value("\${lsd.dist.db.connectionString}") dbConnectionString: String,
         @Value("\${lsd.dist.http.connectionTimeout.millis:#{2000}}") connectionTimeout: Int
