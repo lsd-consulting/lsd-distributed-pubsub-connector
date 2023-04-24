@@ -42,8 +42,6 @@ class InterceptedDocumentHttpRepository(
         }
     }
 
-    override val isActive = true
-
     override fun findByTraceIds(vararg traceId: String): List<InterceptedInteraction> {
         val response: HttpResponse
 
@@ -66,4 +64,6 @@ class InterceptedDocumentHttpRepository(
         val use = response.entity.content.bufferedReader().use(BufferedReader::readText)
         return objectMapper.readValue(use, object: TypeReference<List<InterceptedInteraction>>(){})
     }
+
+    override fun isActive() = true
 }
