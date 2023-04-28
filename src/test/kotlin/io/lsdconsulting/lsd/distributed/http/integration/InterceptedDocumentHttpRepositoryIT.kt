@@ -89,6 +89,8 @@ internal class InterceptedDocumentHttpRepositoryIT {
         InterceptedInteraction(
             elapsedTime = 20L,
             httpStatus = "OK",
+            serviceName = "serviceName",
+            target = "target",
             path = "/path",
             httpMethod = "GET",
             body = "body",

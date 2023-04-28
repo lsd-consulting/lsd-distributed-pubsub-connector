@@ -15,13 +15,13 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-@ConditionalOnProperty(name = ["lsd.dist.db.connectionString"])
+@ConditionalOnProperty(name = ["lsd.dist.connectionString"])
 open class HttpLibraryConfig {
 
     @Bean
-    @ConditionalOnExpression("#{'\${lsd.dist.db.connectionString:}'.startsWith('http')}")
+    @ConditionalOnExpression("#{'\${lsd.dist.connectionString:}'.startsWith('http')}")
     open fun interceptedDocumentRepository(
-        @Value("\${lsd.dist.db.connectionString}") dbConnectionString: String,
+        @Value("\${lsd.dist.connectionString}") dbConnectionString: String,
         @Value("\${lsd.dist.http.connectionTimeout.millis:#{2000}}") connectionTimeout: Int
     ): InterceptedDocumentRepository {
         return InterceptedDocumentHttpRepository(dbConnectionString, connectionTimeout, objectMapper())
