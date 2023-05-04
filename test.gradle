@@ -11,7 +11,7 @@ dependencies {
     testImplementation 'com.github.tomakehurst:wiremock:2.27.2'
     testImplementation 'com.github.tomakehurst:wiremock-jre8:2.35.0'
 
-    testImplementation('io.github.lsd-consulting:lsd-distributed-generator-ui:3.0.9:wiremock-stubs') {
+    testImplementation('io.github.lsd-consulting:lsd-distributed-generator-ui-service:4.0.1.dirty:wiremock-stubs'){
         exclude group: "*", module: "*"
     }
 }
