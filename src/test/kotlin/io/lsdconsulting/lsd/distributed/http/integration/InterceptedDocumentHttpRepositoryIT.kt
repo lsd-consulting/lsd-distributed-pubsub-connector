@@ -8,9 +8,9 @@ import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock.*
 import com.lsdconsulting.generatorui.controller.LsdControllerStub
-import io.lsdconsulting.lsd.distributed.access.model.InteractionType
-import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
-import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRepository
+import io.lsdconsulting.lsd.distributed.connector.model.InteractionType
+import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
+import io.lsdconsulting.lsd.distributed.connector.repository.InterceptedDocumentRepository
 import io.lsdconsulting.lsd.distributed.http.integration.testapp.TestApplication
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll

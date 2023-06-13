@@ -2,8 +2,8 @@ package io.lsdconsulting.lsd.distributed.http.repository
 
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
-import io.lsdconsulting.lsd.distributed.access.model.InterceptedInteraction
-import io.lsdconsulting.lsd.distributed.access.repository.InterceptedDocumentRepository
+import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
+import io.lsdconsulting.lsd.distributed.connector.repository.InterceptedDocumentRepository
 import io.lsdconsulting.lsd.distributed.http.config.log
 import org.apache.http.HttpResponse
 import org.apache.http.HttpStatus.SC_OK

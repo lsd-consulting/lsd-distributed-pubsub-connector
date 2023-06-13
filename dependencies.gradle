@@ -3,7 +3,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
 
     // LSD
-    api 'io.github.lsd-consulting:lsd-distributed-data-access:1.0.4'
+    api 'io.github.lsd-consulting:lsd-distributed-connector:2.0.0'
 
     // Other
     implementation 'org.apache.commons:commons-lang3:3.12.0'
