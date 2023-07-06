@@ -19,7 +19,10 @@ class InterceptedDocumentHttpRepository(
     private val objectMapper: ObjectMapper
 ) : InterceptedDocumentRepository {
 
-    private val uri = "$connectionString/lsds"
+    private val uri = getUri(connectionString)
+
+    private fun getUri(connectionString: String) =
+        if (connectionString.endsWith("/")) "${connectionString}lsds" else "$connectionString/lsds"
 
     override fun save(interceptedInteraction: InterceptedInteraction) {
         val response: HttpResponse
