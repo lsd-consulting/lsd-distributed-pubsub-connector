@@ -14,6 +14,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
+const val CONNECTION_TIMEOUT_MILLIS_DEFAULT = 2000
+
 @Configuration
 @ConditionalOnProperty(name = ["lsd.dist.connectionString"])
 open class HttpLibraryConfig {
@@ -22,8 +24,9 @@ open class HttpLibraryConfig {
     @ConditionalOnExpression("#{'\${lsd.dist.connectionString:}'.startsWith('http')}")
     open fun interceptedDocumentRepository(
         @Value("\${lsd.dist.connectionString}") dbConnectionString: String,
-        @Value("\${lsd.dist.http.connectionTimeout.millis:#{2000}}") connectionTimeout: Int
+        @Value("\${lsd.dist.http.connectionTimeout.millis:#{" + CONNECTION_TIMEOUT_MILLIS_DEFAULT + "}}") connectionTimeout: Int
     ): InterceptedDocumentRepository {
+        val fff = CONNECTION_TIMEOUT_MILLIS_DEFAULT
         return InterceptedDocumentHttpRepository(dbConnectionString, connectionTimeout, objectMapper())
     }
 
