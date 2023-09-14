@@ -26,7 +26,6 @@ open class HttpLibraryConfig {
         @Value("\${lsd.dist.connectionString}") dbConnectionString: String,
         @Value("\${lsd.dist.http.connectionTimeout.millis:#{" + CONNECTION_TIMEOUT_MILLIS_DEFAULT + "}}") connectionTimeout: Int
     ): InterceptedDocumentRepository {
-        val fff = CONNECTION_TIMEOUT_MILLIS_DEFAULT
         return InterceptedDocumentHttpRepository(dbConnectionString, connectionTimeout, objectMapper())
     }
 

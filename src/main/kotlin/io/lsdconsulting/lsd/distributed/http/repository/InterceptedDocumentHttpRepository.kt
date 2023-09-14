@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
 import io.lsdconsulting.lsd.distributed.connector.repository.InterceptedDocumentRepository
-import io.lsdconsulting.lsd.distributed.http.config.log
+import lsd.logging.log
 import org.apache.http.HttpResponse
 import org.apache.http.HttpStatus.SC_OK
 import org.apache.http.client.fluent.Request
