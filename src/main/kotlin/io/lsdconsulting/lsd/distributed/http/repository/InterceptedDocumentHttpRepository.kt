@@ -28,12 +28,18 @@ class InterceptedDocumentHttpRepository(
         val response: HttpResponse
 
         try {
+            val s1 = System.currentTimeMillis()
+            val writeValueAsString = objectMapper.writeValueAsString(interceptedInteraction)
+            log().debug("Serialising the interaction took: ${System.currentTimeMillis()-s1}")
+
+            val s2 = System.currentTimeMillis()
             response = Request.Post(uri)
                 .connectTimeout(connectionTimeout)
                 .socketTimeout(connectionTimeout)
-                .bodyString(objectMapper.writeValueAsString(interceptedInteraction), APPLICATION_JSON)
+                .bodyString(writeValueAsString, APPLICATION_JSON)
                 .execute()
                 .returnResponse()
+            log().info("Calling lsd-ui took: ${System.currentTimeMillis()-s2}")
         } catch (e: SocketTimeoutException) {
             log().warn("Connection to $uri timed out. Dropping interceptedInteraction: $interceptedInteraction")
             return
