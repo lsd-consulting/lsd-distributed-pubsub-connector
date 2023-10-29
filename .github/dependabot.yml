@@ -10,7 +10,7 @@ updates:
       lsd-dependencies:
         patterns:
           - "io.github.lsd-consulting:*"
-      spring-dependencies:
+      springframework-dependencies:
         patterns:
           - "org.springframework.*"
       other-dependencies:
