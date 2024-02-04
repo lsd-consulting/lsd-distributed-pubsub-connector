@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.github.tomakehurst.wiremock.WireMockServer
-import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock.*
 import com.lsdconsulting.generatorui.controller.LsdControllerStub
 import io.lsdconsulting.lsd.distributed.connector.model.InteractionType
@@ -26,7 +25,7 @@ import java.time.ZonedDateTime
 
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = [TestApplication::class])
-internal class InterceptedDocumentHttpRepositoryIT {
+class InterceptedDocumentHttpRepositoryIT {
     @Autowired
     private lateinit var underTest: InterceptedDocumentRepository
 
@@ -34,7 +33,7 @@ internal class InterceptedDocumentHttpRepositoryIT {
 
     @BeforeEach
     fun setup() {
-        WireMock.reset()
+        reset()
     }
 
     @Test
@@ -104,7 +103,7 @@ internal class InterceptedDocumentHttpRepositoryIT {
         @BeforeAll
         @JvmStatic
         internal fun beforeAll() {
-            WireMock.configureFor(8070)
+            configureFor(8070)
             wireMockServer.start()
         }
 
