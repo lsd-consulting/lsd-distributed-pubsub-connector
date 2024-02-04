@@ -5,12 +5,12 @@ dependencies {
 
     // LSD
     api 'io.github.lsd-consulting:lsd-distributed-connector:2.0.4'
-    implementation 'io.github.lsd-consulting:lsd-logging-library:1.0.4'
+    implementation 'io.github.lsd-consulting:lsd-logging-library:1.0.8'
 
     // Other
-    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'org.slf4j:slf4j-api:2.0.11'
     implementation 'org.apache.commons:commons-lang3:3.14.0'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.3'
-    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.1'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.16.1'
     implementation'org.apache.httpcomponents:fluent-hc:4.5.14'
 }
