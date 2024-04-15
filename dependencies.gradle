@@ -8,7 +8,7 @@ dependencies {
     implementation 'io.github.lsd-consulting:lsd-logging-library:1.0.11'
 
     // Other
-    implementation 'org.slf4j:slf4j-api:2.0.12'
+    implementation 'org.slf4j:slf4j-api:2.0.13'
     implementation 'org.apache.commons:commons-lang3:3.14.0'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.0'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0'
