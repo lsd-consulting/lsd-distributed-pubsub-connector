@@ -10,4 +10,4 @@
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.lsd-consulting/lsd-distributed-http-connector)
 
 ## About
-This is a HTTP version of the data access for the distributed data storage.
+This is a HTTP implementation of the data access connector for the distributed data storage.
