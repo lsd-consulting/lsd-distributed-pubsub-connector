@@ -4,22 +4,22 @@
 # This hook checks the commit message (header only) to ensure that the expected format is used.
 #
 # Commits with breaking changes should include 'BREAKING CHANGE: <some description>' in the commit body with a description (Note: this is not validated by the hook).
-# 
- 
+#
+
 commit_regex='^((build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-zA-Z0-9 /_,.-]+?\))?: .{1,79}\w|Merge .+|(fixup|squash)! .+)$'
 
 error_msg='
 ----------------------------------------------------
-ABORTING commit - Expecting a conventional commit message header: 
-    
+ABORTING commit - Expecting a conventional commit message header:
+
       <type>[(optional scope)]: <summary - MAX 80 chars>
 ----------------------------------------------------
 Examples:
 1.
   fix(cache): Fix nasty caching bug (#123)
-2.  
+2.
   feat: Enable awesome feature (#456)
-3. 
+3.
   chore: Cleanup code to reduce maintenance cost
   <newline>
   BREAKING CHANGE: Deprecated feature xyz finally removed
@@ -40,7 +40,7 @@ Accepted Types:
   test      - for adding or updating tests
 ----------------------------------------------------
 Exceptions:
-  fixup! ... 
+  fixup! ...
   squash! ...
   Merge ...
 '

@@ -4,7 +4,7 @@ bootJar {
 
 jar {
     enabled = true
-    classifier = ""
+    archiveClassifier = ''
 }
 
 tasks.register('sourcesJar', Jar) {
@@ -28,39 +28,43 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             groupId = "$group"
-            artifactId = 'lsd-distributed-http-connector'
+            artifactId = 'lsd-distributed-pubsub-connector'
             version = "$version"
 
             from components.java
             artifact sourcesJar
             artifact javadocJar
             pom {
-                name = 'lsd-distributed-http-connector'
-                description = 'This is a HTTP version of the data access for the distributed data storage.'
-                url = 'https://github.com/lsd-consulting/lsd-distributed-http-connector'
+                name = 'lsd-distributed-pubsub-connector'
+                description = 'This is a Pubsub version of the data connector for the distributed data storage.'
+                url = 'https://github.com/lsd-consulting/lsd-distributed-pubsub-connector'
                 licenses {
                     license {
-                        name = "The Apache Software License, Version 2.0"
-                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                        distribution = "repo"
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
                     }
                 }
                 developers {
                     developer {
-                        name = "Lukasz"
-                        email = "lukasz.gryzbon@gmail.com"
+                        name = 'Alex Schiff'
+                        email = 'alex.schiff@protonmail.com'
+                    }
+                    developer {
+                        name = 'Lukasz'
+                        email = 'lukasz.gryzbon@gmail.com'
                         organization = 'Integreety Ltd.'
                         organizationUrl = 'https://www.integreety.co.uk'
                     }
                     developer {
-                        name = "Nick"
+                        name = 'Nick'
                         email = "nicholas.mcdowall@gmail.com"
                         organization = 'NKM IT Solutions'
                         organizationUrl = 'https://github.com/nickmcdowall'
                     }
                 }
                 scm {
-                    url = "https://github.com/lsd-consulting/lsd-distributed-http-connector.git"
+                    url = 'https://github.com/lsd-consulting/lsd-distributed-pubsub-connector.git'
                 }
             }
             repositories {
@@ -77,17 +81,17 @@ publishing {
 nexusPublishing {
     repositories {
         sonatype {  //only for users registered in Sonatype after 24 Feb 2021
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            nexusUrl.set(uri('https://s01.oss.sonatype.org/service/local/'))
+            snapshotRepositoryUrl.set(uri('https://s01.oss.sonatype.org/content/repositories/snapshots/'))
         }
     }
 }
 
 signing {
-    if (project.findProperty("signingKey")) {
+    if (project.findProperty('signingKey')) {
         // Use in-memory ascii-armored keys
-        def signingKey = findProperty("signingKey")
-        def signingPassword = findProperty("signingPassword")
+        def signingKey = findProperty('signingKey')
+        def signingPassword = findProperty('signingPassword')
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign publishing.publications.mavenJava
     } else {
