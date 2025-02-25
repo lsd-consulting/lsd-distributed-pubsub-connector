@@ -1,1 +1,1 @@
-io.lsdconsulting.lsd.distributed.http.config.HttpLibraryConfig
+io.lsdconsulting.lsd.distributed.pubsub.config.PubsubLibraryConfig
