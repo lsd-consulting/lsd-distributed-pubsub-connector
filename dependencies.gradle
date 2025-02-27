@@ -1,6 +1,13 @@
 dependencies {
+    // Kotlin
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+
     // Spring
     compileOnly 'org.springframework.boot:spring-boot-autoconfigure'
+
+    // GCP
+    compileOnly 'com.google.cloud:spring-cloud-gcp-core'
 
     // LSD
     api 'io.github.lsd-consulting:lsd-distributed-connector:2.0.11'
@@ -11,4 +18,5 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+    implementation 'com.google.cloud:google-cloud-pubsub'
 }
