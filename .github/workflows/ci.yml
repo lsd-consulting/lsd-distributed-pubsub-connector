@@ -7,16 +7,21 @@ name: CI
 on:
   push:
     branches:
+      - master
       - main
   pull_request:
     branches:
+      - master
       - main
 jobs:
   build:
     uses: lsd-consulting/shared-workflows/.github/workflows/build.yml@main
     with:
+      operating-system: ubuntu-22.04
       java-version: '17'
       codecov: true
+      codecov-path: '**/build/reports/jacoco/test/jacocoTestReport.xml'
+      artifact-path: '**/build/reports'
     secrets: inherit
   release:
     needs: build
