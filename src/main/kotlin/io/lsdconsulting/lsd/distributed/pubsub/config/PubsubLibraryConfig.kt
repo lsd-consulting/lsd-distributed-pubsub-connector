@@ -1,10 +1,6 @@
 package io.lsdconsulting.lsd.distributed.pubsub.config
 
-import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.SerializationFeature
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.google.api.gax.core.CredentialsProvider
 import com.google.api.gax.rpc.TransportChannelProvider
 import com.google.cloud.pubsub.v1.Publisher
@@ -55,9 +51,5 @@ class PubsubLibraryConfig {
     )
 
     @Bean
-    fun objectMapper() = ObjectMapper().apply {
-        registerModules(KotlinModule.Builder().build(), JavaTimeModule())
-        configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-        configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-    }
+    fun objectMapper() = lsd.format.json.objectMapper
 }

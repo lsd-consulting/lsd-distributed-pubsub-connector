@@ -8,9 +8,11 @@ dependencies {
 
     // GCP
     compileOnly 'com.google.cloud:spring-cloud-gcp-core'
+    implementation 'com.google.cloud:google-cloud-pubsub'
 
     // LSD
     api 'io.github.lsd-consulting:lsd-distributed-connector:2.0.11'
+    api 'io.github.lsd-consulting:lsd-formatting-library:4.0.62'
     implementation 'io.github.lsd-consulting:lsd-logging-library:1.0.18'
 
     // Other
@@ -18,5 +20,4 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
-    implementation 'com.google.cloud:google-cloud-pubsub'
 }
