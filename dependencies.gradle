@@ -1,9 +1,18 @@
 dependencies {
+    // Kotlin
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+
     // Spring
     compileOnly 'org.springframework.boot:spring-boot-autoconfigure'
 
+    // GCP
+    compileOnly 'com.google.cloud:spring-cloud-gcp-core'
+    implementation 'com.google.cloud:google-cloud-pubsub'
+
     // LSD
     api 'io.github.lsd-consulting:lsd-distributed-connector:2.0.11'
+    api 'io.github.lsd-consulting:lsd-formatting-library:4.0.62'
     implementation 'io.github.lsd-consulting:lsd-logging-library:1.0.18'
 
     // Other
