@@ -1,6 +1,5 @@
 package io.lsdconsulting.lsd.distributed.pubsub.config
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.api.gax.core.CredentialsProvider
 import com.google.api.gax.rpc.TransportChannelProvider
 import com.google.cloud.pubsub.v1.Publisher
@@ -23,9 +22,8 @@ class PubsubLibraryConfig {
     @Suppress("unused")
     @ConditionalOnExpression("#{'\${lsd.dist.connectionString:}'.startsWith('pubsub')}")
     fun interceptedDocumentRepository(
-        publisher: Publisher,
-        objectMapper: ObjectMapper
-    ): InterceptedDocumentRepository = InterceptedDocumentPubsubRepository(publisher, objectMapper)
+        publisher: Publisher
+    ): InterceptedDocumentRepository = InterceptedDocumentPubsubRepository(publisher)
 
     @Bean(destroyMethod = "shutdown")
     @ConditionalOnExpression("#{'\${lsd.dist.connectionString:}'.startsWith('pubsub')}")
@@ -49,7 +47,4 @@ class PubsubLibraryConfig {
         projectIdProvider.projectId,
         PUBSUB_TOPIC_REGEX.toRegex().matchEntire(connectionString)!!.groups["topicName"]!!.value
     )
-
-    @Bean
-    fun objectMapper() = lsd.format.json.objectMapper
 }

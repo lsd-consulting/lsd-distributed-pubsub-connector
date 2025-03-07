@@ -1,6 +1,5 @@
 package io.lsdconsulting.lsd.distributed.pubsub.integration
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.api.gax.core.CredentialsProvider
 import com.google.api.gax.rpc.TransportChannelProvider
 import com.google.cloud.pubsub.v1.SubscriptionAdminClient
@@ -16,6 +15,9 @@ import io.lsdconsulting.lsd.distributed.connector.model.InteractionType.REQUEST
 import io.lsdconsulting.lsd.distributed.connector.model.InterceptedInteraction
 import io.lsdconsulting.lsd.distributed.pubsub.integration.testapp.TestApplication
 import io.lsdconsulting.lsd.distributed.pubsub.repository.InterceptedDocumentPubsubRepository
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.decodeFromByteArray
+import kotlinx.serialization.protobuf.ProtoBuf
 import org.apache.commons.lang3.RandomStringUtils.secure
 import org.awaitility.kotlin.await
 import org.junit.jupiter.api.BeforeEach
@@ -34,6 +36,7 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit.MILLIS
 
+@OptIn(ExperimentalSerializationApi::class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = [TestApplication::class])
 @Testcontainers
 @ActiveProfiles("test")
@@ -49,9 +52,6 @@ internal class RepositoryIT {
 
     @Autowired
     private lateinit var credentialsProvider: CredentialsProvider
-
-    @Autowired
-    private lateinit var objectMapper: ObjectMapper
 
     @BeforeEach
     fun createTopicAndSubscription() {
@@ -110,9 +110,8 @@ internal class RepositoryIT {
             await.untilAsserted {
                 val pullResponse: PullResponse = subscriber.pullCallable().call(pullRequest)
                 pullResponse.receivedMessagesList shouldHaveSize 1
-                pullResponse.receivedMessagesList[0].message.data.toStringUtf8() shouldBe objectMapper.writeValueAsString(
-                    interceptedInteraction
-                )
+                val bytes = pullResponse.receivedMessagesList[0].message.data.toByteArray()
+                ProtoBuf.decodeFromByteArray<InterceptedInteraction>(bytes) shouldBe interceptedInteraction
             }
         }
     }
