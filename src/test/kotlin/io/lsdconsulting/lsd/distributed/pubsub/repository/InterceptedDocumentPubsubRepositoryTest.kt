@@ -26,7 +26,7 @@ class InterceptedDocumentPubsubRepositoryTest {
 
     @Test
     fun `should call publish save is invoked`() {
-        val interceptedInteraction: InterceptedInteraction = kRandom.nextObject(InterceptedInteraction::class.java)
+        val interceptedInteraction: InterceptedInteraction = kRandom.nextObject(InterceptedInteraction::class.java)!!
         val byteArray = ProtoBuf.encodeToByteArray(interceptedInteraction)
         val pubsubMessage = PubsubMessage.newBuilder().setData(ByteString.copyFrom(byteArray)).build()
         every { publisher.publish(eq(pubsubMessage)) } returns SettableApiFuture.create<String>()
@@ -39,7 +39,7 @@ class InterceptedDocumentPubsubRepositoryTest {
 
     @Test
     fun `should not throw exception when exception encountered during publishing`() {
-        val interceptedInteraction: InterceptedInteraction = kRandom.nextObject(InterceptedInteraction::class.java)
+        val interceptedInteraction: InterceptedInteraction = kRandom.nextObject(InterceptedInteraction::class.java)!!
         val byteArray = ProtoBuf.encodeToByteArray(interceptedInteraction)
         val pubsubMessage = PubsubMessage.newBuilder().setData(ByteString.copyFrom(byteArray)).build()
         every { publisher.publish(eq(pubsubMessage)) } returns SettableApiFuture.create<String>()

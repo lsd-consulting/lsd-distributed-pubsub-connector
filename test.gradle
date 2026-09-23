@@ -12,7 +12,7 @@ dependencies {
 
     // Other
     testImplementation 'ch.qos.logback:logback-core'
-    testImplementation 'io.github.k-random:k-random-core:2.0.5'
+    testImplementation 'io.github.k-random:k-random-core:2.2.21'
     testImplementation 'org.awaitility:awaitility-kotlin'
     testImplementation 'org.apache.commons:commons-lang3'
     testImplementation 'io.kotest:kotest-assertions-core:6.2.5'
