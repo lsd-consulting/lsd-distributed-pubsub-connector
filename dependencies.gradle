@@ -11,8 +11,8 @@ dependencies {
     implementation 'com.google.cloud:google-cloud-pubsub'
 
     // LSD
-    api 'io.github.lsd-consulting:lsd-distributed-connector:3.0.0'
-    implementation 'io.github.lsd-consulting:lsd-logging-library:3.0.0'
+    api 'io.github.lsd-consulting:lsd-distributed-connector:3.1.1'
+    implementation 'io.github.lsd-consulting:lsd-logging-library:3.1.1'
 
     // Other
     implementation 'org.slf4j:slf4j-api'
